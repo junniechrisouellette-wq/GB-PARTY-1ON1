@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claim Your Ticket</title>
+
+<style>
+
+body{
+    margin:0;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,#FFD70055,transparent 45%),
+    radial-gradient(circle at bottom,#ff00aa33,transparent 45%),
+    #050505;
+}
+
+.container{
+    width:360px;
+    padding:30px;
+    text-align:center;
+    background:#111;
+    border:1px solid #FFD700;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,215,0,.4);
+}
+
+h1{
+    color:#FFD700;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border-radius:10px;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:15px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(90deg,#8A6500,#FFD700,#FFF4B0,#FFD700,#8A6500);
+}
+
+#ticket{
+    display:none;
+    margin-top:25px;
+}
+
+#ticket img{
+    width:100%;
+    border-radius:15px;
+    box-shadow:0 0 20px gold;
+}
+
+.error{
+    color:#ff5555;
+    margin-top:15px;
+}
+/* LOADING ANIMATION */
+
+.loader{
+
+display:none;
+
+margin-top:25px;
+
+}
+
+.loader-circle{
+
+width:70px;
+height:70px;
+
+margin:auto;
+
+border:6px solid rgba(255,215,0,.2);
+
+border-top:6px solid #FFD700;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+box-shadow:0 0 20px gold;
+
+}
+
+.loader p{
+
+margin-top:15px;
+
+color:#FFD700;
+
+font-weight:bold;
+
+letter-spacing:2px;
+
+}
+
+@keyframes spin{
+
+0%{
+transform:rotate(0deg);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🎟️ CLAIM YOUR TICKET</h1>
+
+<p>Enter Access Code</p>
+
+<input
+type="password"
+id="code"
+placeholder="Enter Code">
+
+<button onclick="checkCode()">
+OPEN TICKET
+</button>
+
+<div id="error" class="error"></div>
+
+<div id="loader" style="display:none; margin-top:20px;">
+
+<div class="loader-circle"></div>
+
+<p style="margin-top:15px;color:#FFD700;font-weight:bold;">
+VERIFYING VIP ACCESS...
+</p>
+
+</div>
+
+<div id="ticket">
+
+<img src="TICKET PASS ACCESS.jpg" alt="Ticket">
+
+</div>
+
+</div>
+
+<script>
+
+function checkCode(){
+
+const secret="GB081523";
+
+const input=document.getElementById("code").value.trim();
+
+const loader=document.getElementById("loader");
+const ticket=document.getElementById("ticket");
+const error=document.getElementById("error");
+
+if(input===secret){
+
+    error.innerHTML="";
+
+    ticket.style.display="none";
+
+    loader.style.display="block";
+
+    setTimeout(function(){
+
+        loader.style.display="none";
+
+        ticket.style.display="block";
+
+    },2000);
+
+}else{
+
+    loader.style.display="none";
+
+    ticket.style.display="none";
+
+    error.innerHTML="❌ Incorrect Access Code";
+    }
+
+}
+</script>
+
+</body>
+</html>
